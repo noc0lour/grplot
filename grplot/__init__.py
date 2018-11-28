@@ -102,10 +102,11 @@ class PlotSettingsWidget(QWidget):
     def _sample_rate_changed(self):
         # This is the callback from the widget changing values
         # do not use the sample rate property since it updates the widget
-        self._sample_rate = self.file_sr_widget.value()
-        if self._data_source is not None:
-            self._data_source.sample_rate = self._sample_rate
-        self.source_update()
+        if self.file_sr_widget.value() > 0:
+            self._sample_rate = self.file_sr_widget.value()
+            if self._data_source is not None:
+                self._data_source.sample_rate = self._sample_rate
+            self.source_update()
     
     def _data_type_changed(self):
         logger.warning('Data type change not implemented, using complex64')
