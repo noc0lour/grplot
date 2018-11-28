@@ -129,7 +129,7 @@ class PlotSettingsWidget(QWidget):
                 self.file_length.setText(str(self._samples))
         if self._data_source is not None and self._data_source.data is not None:
             # There is data so we can update the duration
-            duration = self._sample_rate / self._samples
+            duration = self._samples / self._sample_rate
             self.file_duration.setText(str(duration))
 
     @property
